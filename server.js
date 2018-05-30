@@ -9,14 +9,14 @@ var Comment = require('./model/survey');
 var secrets = require('./secrets_template');
 var Result = require('./model/result');
 var cors = require ('cors');
-
+const path = require('path');
 //and create our instances
 var app = express();
 var router = express.Router();
 
 //set our port to either a predetermined port number if you have set it up, or 3001
-var port = process.env.API_PORT || 3001;
-
+var port = process.env.PORT || 3001;
+app.use(express.static(path.join(__dirname, 'client/build')));
 //db config -- set your URI from mLab in secrets.js
 var mongoDB = secrets.requestSecret('dbuser');
 mongoose.connect(mongoDB, { useMongoClient: true });
