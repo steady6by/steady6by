@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var Comment = require('./model/survey');
 var secrets = require('./secrets_template');
 var Result = require('./model/result');
+var cors = require ('cors');
 
 //and create our instances
 var app = express();
@@ -21,7 +22,7 @@ var mongoDB = secrets.requestSecret('dbuser');
 mongoose.connect(mongoDB, { useMongoClient: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-
+app.use(cors());
 //now we should configure the APi to use bodyParser and look for JSON data in the body
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
