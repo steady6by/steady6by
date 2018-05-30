@@ -15,11 +15,8 @@ var app = express();
 var router = express.Router();
 
 //set our port to either a predetermined port number if you have set it up, or 3001
-var server = app.listen(process.env.PORT || 8080, function () {
-    var port = server.address().port;
-    console.log("App now running on port", port);
-});
 
+var port = process.env.API_PORT || 3001;
 //db config -- set your URI from mLab in secrets.js
 var mongoDB = secrets.requestSecret('dbuser');
 mongoose.connect(mongoDB, { useMongoClient: true });
