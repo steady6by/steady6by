@@ -112,34 +112,6 @@ class Surv extends Component {
         var Results = JSON.stringify(AB);
 
 
-
-        var ResultAsString = JSON.stringify({"result":[],"id":3});
-        var obj = JSON.parse(ResultAsString);
-        for(var i in survey.data) {
-            if (i!=null && i!=="quality") {
-                obj['result'].push({"id": i, "answer": survey.data[i]});
-            }
-            if (i!=null && i==="quality"){
-                var rows = [];
-                var id = "25".toString();
-                for(var y in survey.data.quality)
-                {
-                    rows.push({"id": y, "contentment": survey.data.quality[y].satisfy,"importance": survey.data.quality[y].important});
-                }
-                obj['result'].push({id,rows});
-            }
-
-        }
-
-        var z = parseInt("0");
-        for(var x in survey.data.quality){
-            z += parseInt(survey.data.quality[x].satisfy);
-
-        }
-        z = JSON.stringify(z);
-        var obj1 ={"msq":z};
-        var MSQResult = JSON.stringify(obj1);
-
         fetch('http://localhost:3001/api/result', {
             method: 'POST',
             headers: {
@@ -149,16 +121,6 @@ class Surv extends Component {
             body: Results
         });
 
-        ResultAsString = JSON.stringify(obj);
-
-        fetch('http://localhost:3001/api/survey', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: ResultAsString
-        });
 
     };
 
