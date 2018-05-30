@@ -14,7 +14,7 @@ class Chart extends React.Component {
 
     componentDidMount() {
 
-        axios('http://localhost:3001/api/result')
+        axios('https://agile-island-72782.herokuapp.com/api/result')
             .then((response) => {
 
                 const a = response.data;

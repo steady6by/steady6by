@@ -112,7 +112,7 @@ class Surv extends Component {
         var Results = JSON.stringify(AB);
 
 
-        fetch('http://localhost:3001/api/result', {
+        fetch('https://agile-island-72782.herokuapp.com/api/result', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
