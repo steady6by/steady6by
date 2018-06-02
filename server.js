@@ -84,10 +84,22 @@ router.route('/result')
     //post new comment to the database
     .post(function(req, res) {
         var result = new Result();
-        (req.body.wj)? result.wj = req.body.wj : null;
-        (req.body.rj)? result.rj = req.body.rj : null;
+        (req.body.w1)? result.w1 = req.body.w1 : null;
+        (req.body.w2)? result.w2 = req.body.w2 : null;
+        (req.body.w3)? result.w3 = req.body.w3 : null;
+        (req.body.w4)? result.w4 = req.body.w4 : null;
+        (req.body.w5)? result.w5 = req.body.w5 : null;
+        (req.body.w6)? result.w6 = req.body.w6 : null;
+        (req.body.r1)? result.r1 = req.body.r1 : null;
+        (req.body.r2)? result.r2 = req.body.r2 : null;
+        (req.body.r3)? result.r3 = req.body.r3 : null;
+        (req.body.r4)? result.r4 = req.body.r4 : null;
+        (req.body.r5)? result.r5 = req.body.r5 : null;
+        (req.body.r6)? result.r6 = req.body.r6 : null;
         (req.body.mobilemanager)? result.mobilemanager = req.body.mobilemanager : null;
         (req.body.location)? result.location = req.body.location : null;
+        (req.body.age)? result.age = req.body.age : null;
+        (req.body.sex)? result.sex = req.body.sex : null;
 
 
         result.save(function(err) {
@@ -102,5 +114,5 @@ app.use('/api', router);
 
 //starts the server and listens for requests
 app.listen(port, function() {
-  console.log(`api running on port ${port}`);
+    console.log(`api running on port ${port}`);
 });
